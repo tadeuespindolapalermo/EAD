@@ -1,6 +1,5 @@
 package com.ead.course.controllers;
 
-import com.ead.course.dtos.CourseDto;
 import com.ead.course.dtos.ModuleDto;
 import com.ead.course.models.CourseModel;
 import com.ead.course.models.ModuleModel;
@@ -31,7 +30,7 @@ public class ModuleController {
 
     @PostMapping("/courses/{courseId}/modules")
     public ResponseEntity<Object> saveModule(
-        @PathVariable(value = "courseId")UUID courseId,
+        @PathVariable(value = "courseId") UUID courseId,
         @RequestBody @Valid ModuleDto moduleDto
     ) {
         Optional<CourseModel> courseModelOptional = courseService.findById(courseId);
@@ -47,8 +46,8 @@ public class ModuleController {
 
     @DeleteMapping("/courses/{courseId}/modules/{moduleId}")
     public ResponseEntity<Object> deleteModule(
-        @PathVariable(value = "courseId")UUID courseId,
-        @PathVariable(value = "moduleId")UUID moduleId
+        @PathVariable(value = "courseId") UUID courseId,
+        @PathVariable(value = "moduleId") UUID moduleId
     ) {
         Optional<ModuleModel> moduleModelOptional = moduleService.findModuleIntoCourse(courseId, moduleId);
         if (moduleModelOptional.isEmpty()) {
@@ -60,8 +59,8 @@ public class ModuleController {
 
     @PutMapping("/courses/{courseId}/modules/{moduleId}")
     public ResponseEntity<Object> updateModule(
-        @PathVariable(value = "courseId")UUID courseId,
-        @PathVariable(value = "moduleId")UUID moduleId,
+        @PathVariable(value = "courseId") UUID courseId,
+        @PathVariable(value = "moduleId") UUID moduleId,
         @RequestBody @Valid ModuleDto moduleDto
     ) {
 
@@ -78,14 +77,14 @@ public class ModuleController {
     }
 
     @GetMapping("/courses/{courseId}/modules")
-    public ResponseEntity<List<ModuleModel>> getAllModules(@PathVariable(value = "courseId")UUID courseId) {
+    public ResponseEntity<List<ModuleModel>> getAllModules(@PathVariable(value = "courseId") UUID courseId) {
         return ResponseEntity.status(HttpStatus.OK).body(moduleService.findAllByCourse(courseId));
     }
 
     @GetMapping("/courses/{courseId}/modules/{moduleId}")
     public ResponseEntity<Object> getOneModule(
-        @PathVariable(value = "courseId")UUID courseId,
-        @PathVariable(value = "moduleId")UUID moduleId
+        @PathVariable(value = "courseId") UUID courseId,
+        @PathVariable(value = "moduleId") UUID moduleId
     ) {
         Optional<ModuleModel> moduleModelOptional = moduleService.findModuleIntoCourse(courseId, moduleId);
         if (!moduleModelOptional.isPresent()) {
