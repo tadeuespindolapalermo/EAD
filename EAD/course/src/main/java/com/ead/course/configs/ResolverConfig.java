@@ -19,3 +19,18 @@ public class ResolverConfig extends WebMvcConfigurationSupport {
     }
 
 }
+
+// Se quiser usar a configuração global de data (DateConfig) com Specification para não dar conflito
+//@Configuration
+//public class ResolverConfig implements WebMvcConfigurer {
+//
+//
+//    @Override
+//    public void addArgumentResolvers(List<HandlerMethodArgumentResolver> argumentResolvers) {
+//        argumentResolvers.add(new SpecificationArgumentResolver());
+//
+//
+//        PageableHandlerMethodArgumentResolver resolver = new PageableHandlerMethodArgumentResolver();
+//        argumentResolvers.add(resolver);
+//    }
+//}
