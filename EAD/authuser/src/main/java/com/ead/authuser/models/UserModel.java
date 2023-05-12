@@ -1,6 +1,6 @@
 package com.ead.authuser.models;
 
-import com.ead.authuser.enums.UserSatatus;
+import com.ead.authuser.enums.UserStatus;
 import com.ead.authuser.enums.UserType;
 import com.fasterxml.jackson.annotation.JsonFormat;
 import com.fasterxml.jackson.annotation.JsonIgnore;
@@ -42,7 +42,7 @@ public class UserModel extends RepresentationModel<UserModel> implements Seriali
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
-    private UserSatatus userSatatus;
+    private UserStatus userStatus;
 
     @Column(nullable = false)
     @Enumerated(EnumType.STRING)
