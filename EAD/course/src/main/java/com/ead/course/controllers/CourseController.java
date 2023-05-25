@@ -23,8 +23,6 @@ import java.time.ZoneId;
 import java.util.Optional;
 import java.util.UUID;
 
-import static java.util.Objects.nonNull;
-
 @Log4j2
 @RestController
 @RequestMapping("/courses")
@@ -108,6 +106,9 @@ public class CourseController {
         @PageableDefault(page = 0, size = 10, sort = "courseId", direction = Sort.Direction.ASC) Pageable pageable,
         @RequestParam(required = false) UUID userId
     ) {
+        if (userId != null) {
+            return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(SpecificationTemplate.courseUserId(userId).and(spec), pageable));
+        }
         return ResponseEntity.status(HttpStatus.OK).body(courseService.findAll(spec, pageable));
     }
 
@@ -118,7 +119,6 @@ public class CourseController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course Not Found!");
         }
         return ResponseEntity.status(HttpStatus.OK).body(courseModelOptional.get());
-        //return courseModelOptional.<ResponseEntity<Object>>map(courseModel -> ResponseEntity.status(HttpStatus.OK).body(courseModel)).orElseGet(() -> ResponseEntity.status(HttpStatus.NOT_FOUND).body("Course Not Found!"));
     }
 
 }
