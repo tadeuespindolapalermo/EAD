@@ -22,6 +22,8 @@ spring:
   output:
     ansi:
       enabled: always
+  rabbitmq:
+    addresses: amqps://cdewvpal:JkpqMosi0hCtFGTEkdE_LyknkN_67HaY@toad.rmq.cloudamqp.com/cdewvpal
 
 logging:
   level:
