@@ -1,0 +1,21 @@
+server:
+  port: 8888
+
+spring:
+  application:
+    name: ead-config-server
+  cloud:
+    config:
+      server:
+        git:
+          uri: https://github.com/tadeuespindolapalermo/ead-config-server-repo
+          default-label: main
+          username: tadeuespindolapalermo
+          password: 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
+
+eureka:
+  client:
+    serviceUrl:
+      defaultZone: 'http://localhost:8761/eureka'
+  instance:
+    hostname: localhost
