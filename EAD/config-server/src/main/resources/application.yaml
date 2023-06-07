@@ -11,7 +11,7 @@ spring:
           uri: https://github.com/tadeuespindolapalermo/ead-config-server-repo
           default-label: main
           username: tadeuespindolapalermo
-          password: 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
+          password: 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
 
 eureka:
   client:
