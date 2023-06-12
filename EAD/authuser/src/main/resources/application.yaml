@@ -7,8 +7,8 @@ spring:
   application:
     name: ead-authuser-service
   config:
-#    import: 'optional:configserver:' ###optional para usar as configurações do application.yaml (arquivo corrente) caso o config-server esteja indisponível ou fora do ar###
-  import: 'configserver:'
+   #import: 'optional:configserver:' ###optional para usar as configurações do application.yaml (arquivo corrente) caso o config-server esteja indisponível ou fora do ar###
+    import: 'configserver:'
   cloud:
     config:
       discovery:
