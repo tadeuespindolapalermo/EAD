@@ -1,70 +1,72 @@
-server:
-  port: 8082
-  servlet:
-    context-path: '/ead-course/'
+#server:
+#  port: 8082
+#  servlet:
+#    context-path: '/ead-course/'
 
 spring:
   application:
     name: ead-course-service
   config:
-    import: 'optional:configserver:' ###optional para usar as configurações do application.yaml (arquivo corrente) caso o config-server esteja indisponível ou fora do ar###
-    #import: 'configserver:'
+   #import: 'optional:configserver:' ###optional para usar as configurações do application.yaml (arquivo corrente) caso o config-server esteja indisponível ou fora do ar###
+    import: 'configserver:'
   cloud:
     config:
       discovery:
         serviceId: ead-config-server
+      username: configserver
+      password: 'ead123cs'
 
-  datasource:
-    url: jdbc:postgresql://localhost:5432/ead-course-v2
-    username: postgres
-    password: psqlroot
-  jpa:
-    hibernate:
-      ddl-auto: update
-      dialect: org.hibernate.dialect.PostgreSQLDialect
-      jdbc:
-        lob.non-contextual-creation: true
-    properties:
-      hibernate:
-        show_sql: true
-  output:
-    ansi:
-      enabled: always
-  rabbitmq:
-    addresses: amqps://cdewvpal:JkpqMosi0hCtFGTEkdE_LyknkN_67HaY@toad.rmq.cloudamqp.com/cdewvpal
-
-logging:
-  level:
-    com.ead: TRACE
-    root: INFO
-    org.springframework.web: DEBUG
-    org.hibernate: INFO
-
-ead:
-  api:
-    url:
-      authuser: 'http://ead-authuser-service/ead-authuser'
-  broker:
-    exchange:
-      userEventExchange: ead.userevent
-      notificationCommandExchange: ead.notificationcommand
-    queue:
-      userEventQueue:
-        name: ead.userevent.ms.course
-    key:
-      notificationCommandKey: ms.notification
-
-management:
-  endpoints:
-    web:
-      exposure:
-        include:
-          - refresh
-          - health
-
-eureka:
-  client:
-    serviceUrl:
-      defaultZone: 'http://localhost:8761/eureka'
-  instance:
-    hostname: localhost
+#  datasource:
+#    url: jdbc:postgresql://localhost:5432/ead-course-v2
+#    username: postgres
+#    password: psqlroot
+#  jpa:
+#    hibernate:
+#      ddl-auto: update
+#      dialect: org.hibernate.dialect.PostgreSQLDialect
+#      jdbc:
+#        lob.non-contextual-creation: true
+#    properties:
+#      hibernate:
+#        show_sql: true
+#  output:
+#    ansi:
+#      enabled: always
+#  rabbitmq:
+#    addresses: amqps://cdewvpal:JkpqMosi0hCtFGTEkdE_LyknkN_67HaY@toad.rmq.cloudamqp.com/cdewvpal
+#
+#logging:
+#  level:
+#    com.ead: TRACE
+#    root: INFO
+#    org.springframework.web: DEBUG
+#    org.hibernate: INFO
+#
+#ead:
+#  api:
+#    url:
+#      authuser: 'http://ead-authuser-service/ead-authuser'
+#  broker:
+#    exchange:
+#      userEventExchange: ead.userevent
+#      notificationCommandExchange: ead.notificationcommand
+#    queue:
+#      userEventQueue:
+#        name: ead.userevent.ms.course
+#    key:
+#      notificationCommandKey: ms.notification
+#
+#management:
+#  endpoints:
+#    web:
+#      exposure:
+#        include:
+#          - refresh
+#          - health
+#
+#eureka:
+#  client:
+#    serviceUrl:
+#      defaultZone: 'http://localhost:8761/eureka'
+#  instance:
+#    hostname: localhost
