@@ -1,0 +1,3 @@
+Criar app
+heroku create -a ead-serviceregistry-prod --remote heroku-prod
+
