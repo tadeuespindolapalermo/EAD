@@ -1,3 +1,9 @@
 Criar app
 heroku create -a ead-serviceregistry-prod --remote heroku-prod
 
+Remote:
+heroku git:remote -a ead-serviceregistry-tadeu-prod -r heroku-prod
+
+Deploy:
+git push heroku-prod prod:master
+
