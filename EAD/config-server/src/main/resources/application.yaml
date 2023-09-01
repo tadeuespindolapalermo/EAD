@@ -11,7 +11,7 @@ spring:
           uri: https://github.com/tadeuespindolapalermo/ead-config-server-repo
           default-label: main
           username: tadeuespindolapalermo
-          password: 123
+          password: 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
 
 ead:
   configServer:
