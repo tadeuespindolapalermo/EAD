@@ -1,6 +1,7 @@
 package com.ead.notificationhex.adapters.inbound.controllers;
 
 import com.ead.notificationhex.adapters.dtos.NotificationDto;
+import com.ead.notificationhex.adapters.dtos.NotificationRecordDto;
 import com.ead.notificationhex.core.domain.NotificationDomain;
 import com.ead.notificationhex.core.domain.PageInfo;
 import com.ead.notificationhex.core.ports.NotificationServicePort;
@@ -47,9 +48,9 @@ public class UserNotificationController {
     @PreAuthorize("hasAnyRole('STUDENT')")
     @PutMapping("/users/{userId}/notifications/{notificationId}")
     public ResponseEntity<Object> updateNotification(
-        @PathVariable(value = "userId") UUID userId,
-        @PathVariable(value = "notificationId") UUID notificationId,
-        @RequestBody @Valid NotificationDto notificationDto
+            @PathVariable(value = "userId") UUID userId,
+            @PathVariable(value = "notificationId") UUID notificationId,
+            @RequestBody @Valid NotificationRecordDto notificationRecordDto
     ) {
         Optional<NotificationDomain> notificationModelOptional =
             notificationServicePort.findByNotificationIdAndUserId(notificationId, userId);
@@ -58,7 +59,7 @@ public class UserNotificationController {
             return ResponseEntity.status(HttpStatus.NOT_FOUND).body("Notification not found!");
         }
 
-        notificationModelOptional.get().setNotificationStatus(notificationDto.getNotificationStatus());
+        notificationModelOptional.get().setNotificationStatus(notificationRecordDto.notificationStatus());
         notificationServicePort.saveNotification(notificationModelOptional.get());
 
         return ResponseEntity.status(HttpStatus.OK).body(notificationModelOptional.get());

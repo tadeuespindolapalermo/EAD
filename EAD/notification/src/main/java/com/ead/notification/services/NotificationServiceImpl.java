@@ -1,4 +1,4 @@
-package com.ead.notification.services.impl;
+package com.ead.notification.services;
 
 import com.ead.notification.enums.NotificationStatus;
 import com.ead.notification.models.NotificationModel;
@@ -12,7 +12,7 @@ import java.util.Optional;
 import java.util.UUID;
 
 @Service
-public class NotificationServiceImpl implements NotificationService {
+public final class NotificationServiceImpl implements NotificationService {
 
     private final NotificationRepository notificationRepository;
 

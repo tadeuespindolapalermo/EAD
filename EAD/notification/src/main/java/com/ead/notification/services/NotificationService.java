@@ -7,7 +7,7 @@ import org.springframework.data.domain.Pageable;
 import java.util.Optional;
 import java.util.UUID;
 
-public interface NotificationService {
+public sealed interface NotificationService permits NotificationServiceImpl {
 
     NotificationModel saveNotification(NotificationModel notificationModel);
 
