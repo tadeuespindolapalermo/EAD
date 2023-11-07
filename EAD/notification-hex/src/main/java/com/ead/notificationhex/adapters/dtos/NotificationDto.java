@@ -3,7 +3,7 @@ package com.ead.notificationhex.adapters.dtos;
 
 import com.ead.notificationhex.core.domain.enums.NotificationStatus;
 
-import javax.validation.constraints.NotNull;
+import jakarta.validation.constraints.NotNull;
 
 public class NotificationDto {
 
