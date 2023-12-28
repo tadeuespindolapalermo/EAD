@@ -1,4 +1,4 @@
-package com.ead.notification.services;
+package com.ead.notification.services.impl;
 
 import com.ead.notification.enums.NotificationStatus;
 import com.ead.notification.models.NotificationModel;
