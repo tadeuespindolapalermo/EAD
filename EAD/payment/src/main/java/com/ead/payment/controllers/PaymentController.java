@@ -33,7 +33,7 @@ public class PaymentController {
     @Autowired
     PaymentService paymentService;
 
-    //@PreAuthorize("hasAnyRole('USER')")
+    @PreAuthorize("hasAnyRole('USER')")
     @PostMapping("/users/{userId}/payments")
     public ResponseEntity<Object> requestPayment(@PathVariable(value="userId") UUID userId,
                                                  @RequestBody @Valid PaymentRequestDto paymentRequestDto){
